@@ -6,6 +6,7 @@ from .actions.heist import Heist
 from .actions.unit import Unit
 from .actions.char import Char
 from .actions.upgrade import Upgrade
+from .actions.attack import Attack
 from .datastructures import Transaction
 
 
@@ -57,7 +58,7 @@ class Heisenberg:
         return self.broadcast(unit)
 
     def char(self, icon, referer=None):
-        """ Create a char in the game. This is required to play the game.
+        """Create a char in the game. This is required to play the game.
 
         :param icon: ID of the char
         :param referer: referer username (if available)
@@ -67,13 +68,23 @@ class Heisenberg:
         return self.broadcast(char)
 
     def upgrade(self, building):
-        """ Upgrade a building in the game with in-game resources.
+        """Upgrade a building in the game with in-game resources.
 
         :param building (str): Building name
         :return (Transaction): Transaction data
         """
         upgrade = Upgrade(self.account, building)
         return self.broadcast(upgrade)
+
+    def attack(self, defender, army):
+        """Attack to an enemy in the game with your unit build.
+
+        :param defender (str): The player you want to attack
+        :param army (list): A list of units with amounts you want to use
+        :return (Transaction): Transaction data
+        """
+        attack = Attack(self.account, defender, army)
+        return self.broadcast(attack)
 
     def broadcast(self, action):
         """ Broadcasts the action to the STEEM network.
