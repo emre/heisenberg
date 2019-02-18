@@ -29,11 +29,11 @@ class Heisenberg:
         h.heist(420)
     """
 
-    def __init__(self, account, private_posting_key):
+    def __init__(self, account, private_posting_key, steem_nodes=None):
         self.account = account
         self.private_posting_key = private_posting_key
         self.steem = Steem(
-            nodes=["https://api.steemit.com"],
+            nodes=steem_nodes or ["https://api.steemit.com"],
             keys=[private_posting_key])
 
     def heist(self, amount):
