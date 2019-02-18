@@ -14,4 +14,5 @@ setup(
             'heisenberg = heisenberg.shell:run_shell',
         ],
     },
+    install_requires=["steem"],
 )
