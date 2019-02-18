@@ -4,6 +4,7 @@ from steembase import operations
 
 from .actions.heist import Heist
 from .actions.unit import Unit
+from .actions.char import Char
 from .datastructures import Transaction
 
 
@@ -53,6 +54,16 @@ class Heisenberg:
         """
         unit = Unit(self.account, unit, unit_amount)
         return self.broadcast(unit)
+
+    def char(self, icon, referer=None):
+        """ Create a char in the game. This is required to play the game.
+
+        :param icon: ID of the char
+        :param referer: referer username (if available)
+        :return (Transaction): Transaction data
+        """
+        char = Char(self.account, icon, referer or "")
+        return self.broadcast(char)
 
 
     def broadcast(self, action):
