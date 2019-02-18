@@ -8,5 +8,10 @@ setup(
     license='MIT',
     author='Emre Yilmaz',
     author_email='mail@emreyilmaz.me',
-    description='A Python library to interact with the drugwars online game'
+    description='A Python library to interact with the drugwars online game',
+    entry_points={
+        'console_scripts': [
+            'heisenberg = heisenberg.shell:run_shell',
+        ],
+    },
 )
