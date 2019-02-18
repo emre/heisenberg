@@ -7,7 +7,7 @@ Drugwars is a blockchain based game. That makes it possible for the blockchain a
 # Installation
 
 ```
-$ pip install heisenberg
+$ pip install heisenberg_drugwars
 ```
 
 # Usage
