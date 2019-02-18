@@ -5,6 +5,7 @@ from steembase import operations
 from .actions.heist import Heist
 from .actions.unit import Unit
 from .actions.char import Char
+from .actions.upgrade import Upgrade
 from .datastructures import Transaction
 
 
@@ -65,6 +66,14 @@ class Heisenberg:
         char = Char(self.account, icon, referer or "")
         return self.broadcast(char)
 
+    def upgrade(self, building):
+        """ Upgrade a building in the game with in-game resources.
+
+        :param building (str): Building name
+        :return (Transaction): Transaction data
+        """
+        upgrade = Upgrade(self.account, building)
+        return self.broadcast(upgrade)
 
     def broadcast(self, action):
         """ Broadcasts the action to the STEEM network.
