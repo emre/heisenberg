@@ -3,6 +3,7 @@ from steem.transactionbuilder import TransactionBuilder
 from steembase import operations
 
 from .actions.heist import Heist
+from .actions.unit import Unit
 from .datastructures import Transaction
 
 
@@ -41,6 +42,18 @@ class Heisenberg:
         """
         heist = Heist(self.account, amount)
         return self.broadcast(heist)
+
+    def unit(self, unit, unit_amount):
+        """Create an "unit" action and broadcast it
+        to the STEEM network. (Recruiting)
+
+        :param unit (str): The unit to recruit
+        :param amount (str): The amount of units to recruit
+        :return (Transaction): Transaction data
+        """
+        unit = Unit(self.account, unit, unit_amount)
+        return self.broadcast(unit)
+
 
     def broadcast(self, action):
         """ Broadcasts the action to the STEEM network.
