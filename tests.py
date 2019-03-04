@@ -43,9 +43,9 @@ class ActionTests(unittest.TestCase):
             [{'unit': 'knifer', 'amount': 3}, {'unit': 'bouncer', 'amount': 2}]
         )
         tx_data = attack.to_transaction()
-        self.assertEqual(tx_data["json"]["username"], 'emrebeyler')
-        self.assertEqual(tx_data["json"]["defender"], 'ngc')
-        self.assertEqual(len(tx_data["json"]["army"]), 2)
+        self.assertEqual(tx_data["json"]["author"], 'emrebeyler')
+        self.assertEqual(tx_data["json"]["payload"]["target"], 'ngc')
+        self.assertEqual(len(tx_data["json"]["payload"]["units"]), 2)
 
     def test_from_transaction(self):
         op_data = {
