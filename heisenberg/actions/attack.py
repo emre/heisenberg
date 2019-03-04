@@ -3,7 +3,7 @@ from . import BaseAction
 class Attack(BaseAction):
     """The class representing the "dw-attack" action in the game."""
 
-    CUSTOM_JSON_ID = "dw-attack"
+    CUSTOM_JSON_ID = "drugwars"
     PROPERTIES = ["username", "defender", "army"]
 
     def __init__(self, account, defender, army):
@@ -13,9 +13,12 @@ class Attack(BaseAction):
 
     def _generate_json(self):
         return {
-            "username": self.account,
-            "defender": self.defender,
-            "army": self.army
+            "author": self.account,
+            "type": "fight",
+            "payload": {
+                "target": self.defender,
+                "units": self.army,
+            }
         }
 
     def __str__(self):
