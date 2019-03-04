@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='heisenberg_drugwars',
-    version='0.1.0',
+    version='0.1.1',
     packages=find_packages(),
     url='https://github.com/emre/heisenberg',
     license='MIT',
@@ -14,5 +14,5 @@ setup(
             'heisenberg = heisenberg.shell:run_shell',
         ],
     },
-    install_requires=["steem"],
+    install_requires=["steem", "requests", "dateutils"],
 )
